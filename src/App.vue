@@ -1,32 +1,38 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+  <div class="container">
+    <header>
+      <h1>
+        <router-link :to="`/`">
+         My Blog
+        </router-link>
+      </h1>
+    </header>
+    <SideNav />
+    <main>
+      <router-view />
+    </main>
+    <footer>
+      <small> copyright my name </small>
+    </footer>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script setup>
+import SideNav from '/src/components/SideNav';
+</script>
+<style>
+.container {
+  width: 700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+header,
+footer {
+  grid-column: 1 / 3;
+  text-align: center;
+}
+h1 {
+  text-decoration: none;
 }
 </style>

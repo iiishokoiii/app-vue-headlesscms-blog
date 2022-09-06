@@ -1,18 +1,12 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <ArticleList :articles="articles" />
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+<script setup>
+import { onMounted } from 'vue';
+import { useArticle } from '/src/hooks/use-article';
+import ArticleList from '/src/components/ArticleList';
+const { articles, fetchArticles } = useArticle();
+onMounted(async () => {
+  await fetchArticles('');
+});
 </script>
